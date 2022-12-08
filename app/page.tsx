@@ -1,13 +1,68 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import { stringify } from "query-string";
 
-export default function Home() {
+import styles from "./page.module.css";
+import Artists from "./artists";
+
+// const fetchTodo = async () => {
+//   const test = spotifyApiClient.getAccessToken();
+//   console.log("whatahwhhhtaw", test);
+
+//   const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+
+//   console.log(JSON.stringify(spotifyApiClient));
+
+//   const thing = await spotifyApiClient.getArtists(["2JWmMcE8Z0vapxOIiT7PLq"]);
+
+//   console.log(thing);
+
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch data");
+//   }
+
+//   return response.json();
+// };
+
+/**
+ * Generates a random string containing numbers and letters
+ */
+const generateRandomString = (length: number) => {
+  let text = "";
+  const possible =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (let i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
+
+const getAuthoriseUrl = () => {
+  const scopes = "user-read-private user-read-email";
+  const state = generateRandomString(16);
+
+  return `https://accounts.spotify.com/authorize?${stringify({
+    response_type: "code",
+    client_id: process.env.SPOTIFY_CLIENT_ID,
+    scope: scopes,
+    redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
+    state: state,
+  })}`;
+};
+
+export default async function Home() {
+  const authoriseUrl = getAuthoriseUrl();
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js 13!</a>
         </h1>
+
+        <Artists />
+
+        <a href={authoriseUrl}>Here you can log in to spotify</a>
 
         <p className={styles.description}>
           Get started by editing{" "}
