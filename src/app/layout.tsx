@@ -1,10 +1,11 @@
 import "server-only";
 
-import SupabaseListener from "../components/supabase-listener";
-import createClient from "../common/supabase/server";
-
 import "./globals.css";
-import Header from "./Header";
+// import Header from "./Header";
+
+import createClient from "~/common/supabase/server";
+import SupabaseListener from "~/components/supabase-listener";
+import Login from "~/components/login";
 
 // do not cache this layout
 export const revalidate = 0;
@@ -28,7 +29,8 @@ export default async function RootLayout({
       */}
       <head />
       <body>
-        <Header />
+        {/* <Header /> */}
+        <Login />
 
         <SupabaseListener accessToken={session?.access_token} />
         {children}
