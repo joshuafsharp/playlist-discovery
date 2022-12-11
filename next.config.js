@@ -9,8 +9,22 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "via.placeholder.com",
-        port: "",
         pathname: "/24",
+      },
+      {
+        protocol: "https",
+        hostname: "landingfoliocom.imgix.net",
+        pathname: "/store/collection/dusk/images/logo.svg",
+      },
+      {
+        protocol: "https",
+        hostname: "landingfoliocom.imgix.net",
+        pathname: "/store/collection/dusk/images/noise.png",
+      },
+      {
+        protocol: "https",
+        hostname: "landingfoliocom.imgix.net",
+        pathname: "/store/collection/dusk/images/hero/4/dashboard-mockup.png",
       },
     ],
   },

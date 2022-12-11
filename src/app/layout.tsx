@@ -1,11 +1,16 @@
 import "server-only";
 
 import "./globals.css";
-// import Header from "./Header";
 
+import { SupabaseClient } from "@supabase/auth-helpers-react";
+import type { Database } from "../db_types";
 import createClient from "~/common/supabase/server";
-import SupabaseListener from "~/components/supabase-listener";
-import Login from "~/components/login";
+import SupabaseListener from "~/components/supabase/listener";
+// import Login from "~/components/login";
+import { Header } from "~/components/header";
+import SupabaseProvider from "~/components/supabase/provider";
+
+export type TypedSupabaseClient = SupabaseClient<Database>;
 
 // do not cache this layout
 export const revalidate = 0;
@@ -28,12 +33,14 @@ export default async function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        {/* <Header /> */}
-        <Login />
+      <body className="min-h-screen">
+        <SupabaseProvider session={session}>
+          <SupabaseListener serverAccessToken={session?.access_token} />
 
-        <SupabaseListener accessToken={session?.access_token} />
-        {children}
+          <Header />
+
+          {children}
+        </SupabaseProvider>
       </body>
     </html>
   );
