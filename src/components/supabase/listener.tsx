@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useSupabase } from "./provider";
 
+import { spotifyApi } from "~/common/spotify/server";
+
 // this component handles refreshing server data when the user logs in or out
 // this method avoids the need to pass a session down to child components
 // in order to re-render when the user's session changes
@@ -24,6 +26,7 @@ export default function SupabaseListener({
         // server and client are out of sync
         // reload the page to fetch fresh server data
         // https://beta.nextjs.org/docs/data-fetching/mutating
+
         router.refresh();
       }
     });

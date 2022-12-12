@@ -9,12 +9,9 @@ interface Props {
 export const revalidate = 0;
 
 const fetchPlaylists = async (token: string) => {
-  console.log(`Bearer ${token}`);
+  spotifyApi.setAccessToken(token);
 
-  spotifyApi.setAccessToken(`Bearer ${token}`);
   const response = await spotifyApi.getUserPlaylists();
-
-  console.log(response);
 
   return response.body.items;
 };

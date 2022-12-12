@@ -6,16 +6,12 @@ export async function Library() {
 
   const response = await supabase.auth.getSession();
 
-  console.log();
-  console.log(response?.data?.session?.access_token);
-  console.log();
-
   return (
     <>
       <h1>Library</h1>
 
       {/* @ts-expect-error borked type */}
-      <LibraryPlaylists token={response?.data?.session?.access_token || ""} />
+      <LibraryPlaylists token={response?.data?.session?.provider_token || ""} />
     </>
   );
 }

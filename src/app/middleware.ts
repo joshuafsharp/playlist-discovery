@@ -5,6 +5,7 @@ import type { NextRequest } from "next/server";
 import { spotifyApi } from "~/common/spotify/server";
 import { spotifyClient } from "~/common/spotify/browser";
 
+// TODO: Add support for middleware once it's supported in next 13
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 
@@ -14,15 +15,14 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  console.log(session);
-
-  if (!session?.access_token) {
-    console.log("no access token lol");
+  // Not authenticated
+  if (!session?.provider_token) {
     return res;
   }
 
-  spotifyClient.setAccessToken(session.access_token);
-  spotifyApi.setAccessToken(session.access_token);
+  // TODO: fix
+  spotifyClient.setAccessToken(session.provider_token);
+  spotifyApi.setAccessToken(session.provider_token);
 
   return res;
 }

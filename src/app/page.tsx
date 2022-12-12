@@ -1,5 +1,3 @@
-"use client";
-
 // import createClient from "~/common/supabase/server";
 import { Hero } from "~/components/home/hero";
 

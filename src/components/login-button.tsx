@@ -8,6 +8,9 @@ export default function LoginButton() {
   const handleLogIn = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "spotify",
+      options: {
+        scopes: "user-library-read",
+      },
     });
 
     if (error) {
