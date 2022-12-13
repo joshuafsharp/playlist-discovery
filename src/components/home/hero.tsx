@@ -10,7 +10,7 @@ export const Hero = () => {
           </p>
 
           <h1 className="mt-8 text-4xl font-normal text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-            Build & discover your basement mixes
+            Create & discover your basement mixes
           </h1>
 
           <div className="mt-12 flex flex-col items-center justify-center space-y-5 px-8 sm:flex-row sm:space-y-0 sm:space-x-5 sm:px-0">

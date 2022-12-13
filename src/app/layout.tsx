@@ -15,6 +15,7 @@ export type TypedSupabaseClient = SupabaseClient<Database>;
 // do not cache this layout
 export const revalidate = 0;
 
+// Layout applies to the home page, discover and support
 export default async function RootLayout({
   children,
 }: {
