@@ -33,7 +33,7 @@ export default function LoginButton() {
     <>
       <div className="absolute -inset-px rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 transition-all duration-200 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
       <button
-        className="relative inline-flex items-center justify-center rounded-full border border-transparent bg-black px-6 py-2 text-base font-normal text-white"
+        className="relative inline-flex w-full items-center justify-center rounded-full border border-transparent bg-white px-6 py-2 text-base font-normal text-gray-900 dark:bg-black dark:text-white"
         onClick={session ? handleLogOut : handleLogIn}
       >
         {session ? "Log out" : "Log in with Spotify"}
