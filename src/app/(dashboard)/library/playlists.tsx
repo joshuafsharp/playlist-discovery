@@ -22,7 +22,9 @@ export const LibraryPlaylists = async ({ token }: Props) => {
   return (
     <ul>
       {playlists.map((playlist) => (
-        <li key={playlist.id}>{JSON.stringify(playlist, null, 2)}</li>
+        <li key={playlist.id} className="dark:text-white">
+          {JSON.stringify(playlist, null, 2)}
+        </li>
       ))}
     </ul>
   );

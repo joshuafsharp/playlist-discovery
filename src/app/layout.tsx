@@ -7,7 +7,7 @@ import type { Database } from "../db_types";
 import createClient from "~/common/supabase/server";
 import SupabaseListener from "~/components/supabase/listener";
 // import Login from "~/components/login";
-import { Header } from "~/components/header";
+import { Header } from "~/components/layouts/default/header";
 import SupabaseProvider from "~/components/supabase/provider";
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
