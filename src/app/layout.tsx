@@ -6,8 +6,6 @@ import { SupabaseClient } from "@supabase/auth-helpers-react";
 import type { Database } from "~/common/types";
 import createClient from "~/common/supabase/server";
 import SupabaseListener from "~/components/supabase/listener";
-// import Login from "~/components/login";
-import { Header } from "~/components/layouts/default/header";
 import SupabaseProvider from "~/components/supabase/provider";
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
@@ -41,9 +39,6 @@ export default async function RootLayout({
       <body className="max-w-screen min-h-screen">
         <SupabaseProvider session={session}>
           <SupabaseListener serverAccessToken={session?.access_token} />
-
-          <Header />
-
           {children}
         </SupabaseProvider>
       </body>

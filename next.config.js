@@ -5,6 +5,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -25,6 +26,15 @@ const nextConfig = {
         protocol: "https",
         hostname: "landingfoliocom.imgix.net",
         pathname: "/store/collection/dusk/images/hero/4/dashboard-mockup.png",
+      },
+      {
+        protocol: "https",
+        hostname: "tailwindui.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.unsplash.com",
+        pathname: "/**",
       },
     ],
   },

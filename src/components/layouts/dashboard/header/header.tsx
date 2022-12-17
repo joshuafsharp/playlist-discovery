@@ -2,6 +2,7 @@
 
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+import Image from "next/image";
 
 import {
   ChevronDownIcon,
@@ -60,22 +61,8 @@ export const Header = () => {
   return (
     <>
       {/* Top nav*/}
-      <header className="relative flex h-16 flex-shrink-0 items-center bg-white">
-        {/* Logo area */}
-        <div className="absolute inset-y-0 left-0 md:static md:flex-shrink-0">
-          <a
-            href="#"
-            className="flex h-16 w-16 items-center justify-center bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 md:w-20"
-          >
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=white"
-              alt="Your Company"
-            />
-          </a>
-        </div>
-
-        {/* Picker area */}
+      <header className="sticky flex h-16 flex-shrink-0 items-center bg-white dark:bg-black">
+        {/* Mobile picker area */}
         <div className="mx-auto md:hidden">
           <div className="relative">
             <label htmlFor="inbox-select" className="sr-only">
@@ -101,7 +88,7 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Menu button area */}
+        {/* Mobile menu button area */}
         <div className="absolute inset-y-0 right-0 flex items-center pr-4 sm:pr-6 md:hidden">
           {/* Mobile menu button */}
           <button
@@ -115,35 +102,25 @@ export const Header = () => {
         </div>
 
         {/* Desktop nav area */}
-        <div className="hidden md:flex md:min-w-0 md:flex-1 md:items-center md:justify-between">
-          <div className="min-w-0 flex-1">
-            <div className="relative max-w-2xl text-gray-400 focus-within:text-gray-500">
-              <label htmlFor="desktop-search" className="sr-only">
-                Search
-              </label>
-              <input
-                id="desktop-search"
-                type="search"
-                placeholder="Search"
-                className="block w-full border-transparent pl-12 placeholder-gray-500 focus:border-transparent focus:ring-0 sm:text-sm"
-              />
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-4">
-                <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
-              </div>
+        <div className="hidden px-4 md:flex md:min-w-0 md:flex-1 md:items-center md:justify-between">
+          <div className="focus-within:text-gray-4s00 relative max-w-2xl flex-grow text-gray-300">
+            <label htmlFor="desktop-search" className="sr-only">
+              Search
+            </label>
+
+            <input
+              id="desktop-search"
+              type="search"
+              placeholder="Search"
+              className="block w-full rounded-full border-transparent pl-12 placeholder-gray-500 focus:border-transparent focus:ring-0 dark:bg-zinc-900 sm:text-sm"
+            />
+
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-4">
+              <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
             </div>
           </div>
+
           <div className="ml-10 flex flex-shrink-0 items-center space-x-10 pr-4">
-            <nav aria-label="Global" className="flex space-x-10">
-              <a href="#" className="text-sm font-medium text-gray-900">
-                Inboxes
-              </a>
-              <a href="#" className="text-sm font-medium text-gray-900">
-                Reporting
-              </a>
-              <a href="#" className="text-sm font-medium text-gray-900">
-                Settings
-              </a>
-            </nav>
             <div className="flex items-center space-x-8">
               <span className="inline-flex">
                 <a
@@ -158,10 +135,12 @@ export const Header = () => {
               <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">
                   <span className="sr-only">Open user menu</span>
-                  <img
-                    className="h-8 w-8 rounded-full"
+                  <Image
+                    className="rounded-full"
                     src={user.imageUrl}
                     alt=""
+                    height="40"
+                    width="40"
                   />
                 </Menu.Button>
 
@@ -245,10 +224,12 @@ export const Header = () => {
                 >
                   <div className="flex h-16 items-center justify-between px-4 sm:px-6">
                     <a href="#">
-                      <img
-                        className="block h-8 w-auto"
+                      <Image
+                        className="block"
                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                         alt="Your Company"
+                        height="44"
+                        width="44"
                       />
                     </a>
                     <button
@@ -303,10 +284,12 @@ export const Header = () => {
                   <div className="border-t border-gray-200 pt-4 pb-3">
                     <div className="max-w-8xl mx-auto flex items-center px-4 sm:px-6">
                       <div className="flex-shrink-0">
-                        <img
-                          className="h-10 w-10 rounded-full"
+                        <Image
+                          className="rounded-full"
                           src={user.imageUrl}
                           alt=""
+                          height="40"
+                          width="40"
                         />
                       </div>
                       <div className="ml-3 min-w-0 flex-1">

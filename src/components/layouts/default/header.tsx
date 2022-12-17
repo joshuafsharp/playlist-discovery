@@ -12,11 +12,11 @@ export const Header = () => {
 
   const navLinks: InternalLink[] = [
     {
-      href: "/discover",
+      href: "/dashboard/discover",
       label: "Discover",
     },
     {
-      href: "/library",
+      href: "/dashboard/library",
       label: "Library",
     },
     {
