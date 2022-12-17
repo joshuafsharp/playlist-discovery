@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LoginButton from "../../login-button";
-import { InternalLink } from "~/common/types/link";
+import { InternalLink } from "~/common/types";
 
 export const Header = () => {
   const [expanded, setExpanded] = useState(false);

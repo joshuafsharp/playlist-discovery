@@ -3,7 +3,7 @@ import "server-only";
 import "./globals.css";
 
 import { SupabaseClient } from "@supabase/auth-helpers-react";
-import type { Database } from "~/common/types/supabase";
+import type { Database } from "~/common/types";
 import createClient from "~/common/supabase/server";
 import SupabaseListener from "~/components/supabase/listener";
 // import Login from "~/components/login";

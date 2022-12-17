@@ -9,7 +9,7 @@ import {
   PencilSquareIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
-import type { Database } from "~/common/types/supabase";
+import type { Database } from "~/common/types";
 import createClient from "~/common/supabase/server";
 import SupabaseListener from "~/components/supabase/listener";
 import { Header } from "~/components/layouts/dashboard/header";
