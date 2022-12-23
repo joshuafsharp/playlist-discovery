@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import LoginButton from "../../login-button";
+import LoginButton from "../../login-button.client";
 import { InternalLink } from "~/common/types";
 
 export const Header = () => {

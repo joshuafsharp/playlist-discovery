@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useSupabase } from "./provider";
+import { useSupabase } from "./provider.client";
 
 // this component handles refreshing server data when the user logs in or out
 // this method avoids the need to pass a session down to child components

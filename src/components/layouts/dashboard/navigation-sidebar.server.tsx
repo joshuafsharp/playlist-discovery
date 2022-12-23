@@ -25,9 +25,12 @@ function classNames(...classes: string[]) {
 /* Narrow sidebar*/
 export const NavigationSidebar = () => {
   return (
-    <div aria-label="Sidebar" className="bg-zinc-900">
+    <div
+      aria-label="Sidebar"
+      className="inset-y-0 z-10 hidden w-20 bg-zinc-900 md:fixed md:flex md:flex-col"
+    >
       {/* Logo area */}
-      <div className="absolute inset-y-0 left-0 md:static md:flex-shrink-0">
+      <div className="left-0 md:static md:flex-shrink-0">
         <Link
           href="/"
           className="flex h-16 w-16 items-center justify-center bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 md:w-20"

@@ -1,4 +1,4 @@
-import { LibraryPlaylists } from "./playlists";
+import { LibraryPlaylists } from "./playlists.server";
 import createClient from "~/common/supabase/server";
 
 export async function Library() {
@@ -8,7 +8,9 @@ export async function Library() {
 
   return (
     <>
-      <h1>Library</h1>
+      <h1 className="mb-12 text-3xl font-semibold leading-tight tracking-wide dark:text-white">
+        Library
+      </h1>
 
       {/* @ts-expect-error borked type */}
       <LibraryPlaylists token={response?.data?.session?.provider_token || ""} />

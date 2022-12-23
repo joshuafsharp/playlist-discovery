@@ -61,7 +61,7 @@ export const Header = () => {
   return (
     <>
       {/* Top nav*/}
-      <header className="sticky flex h-16 flex-shrink-0 items-center bg-white dark:bg-black">
+      <header className="sticky top-0 flex h-16 items-center bg-white dark:bg-black">
         {/* Mobile picker area */}
         <div className="mx-auto md:hidden">
           <div className="relative">
@@ -103,7 +103,7 @@ export const Header = () => {
 
         {/* Desktop nav area */}
         <div className="hidden px-4 md:flex md:min-w-0 md:flex-1 md:items-center md:justify-between">
-          <div className="focus-within:text-gray-4s00 relative max-w-2xl flex-grow text-gray-300">
+          <div className="relative max-w-2xl flex-grow text-gray-300 focus-within:text-gray-400">
             <label htmlFor="desktop-search" className="sr-only">
               Search
             </label>
