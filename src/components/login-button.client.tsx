@@ -1,21 +1,27 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useSupabase } from "./supabase/provider.client";
 
 export default function LoginButton() {
   const { supabase, session } = useSupabase();
+  const router = useRouter();
 
   const handleLogIn = async () => {
+    console.log(process.env.NEXT_PUBLIC_SITE_URL);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "spotify",
       options: {
         scopes: "user-library-read",
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/authenticated`,
       },
     });
 
     if (error) {
       console.log({ error });
     }
+
+    router.push("/authenticated");
   };
 
   const handleLogOut = async () => {
@@ -23,7 +29,10 @@ export default function LoginButton() {
 
     if (error) {
       console.log({ error });
+      return;
     }
+
+    router.replace("/");
   };
 
   // this `session` is from the root loader - server-side

@@ -1,4 +1,6 @@
+import { useRouter } from "next/navigation";
 import "server-only";
+import createClient from "~/common/supabase/server";
 
 import { Header } from "~/components/layouts/dashboard/header/header.client";
 import { NavigationSidebar } from "~/components/layouts/dashboard/navigation-sidebar.server";
@@ -11,6 +13,16 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const supabase = createClient();
+  const { replace } = useRouter();
+
+  const { data } = await supabase.auth.getSession();
+
+  if (!data?.session) {
+    console.log("going to login");
+    replace("/login");
+  }
+
   return (
     <div>
       <NavigationSidebar />
