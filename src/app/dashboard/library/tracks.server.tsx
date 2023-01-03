@@ -10,34 +10,34 @@ interface Props {
 
 export const revalidate = 0;
 
-const fetchPlaylists = async (token: string) => {
+const fetchMyTracks = async (token: string) => {
   spotifyApi.setAccessToken(token);
 
-  const response = await spotifyApi.getUserPlaylists();
+  const response = await spotifyApi.getMySavedTracks();
 
   return response.body.items;
 };
 
-export const LibraryPlaylists = async ({ token }: Props) => {
-  const playlists = await fetchPlaylists(token);
+export const LibraryTracks = async ({ token }: Props) => {
+  const tracks = await fetchMyTracks(token);
 
   return (
     <section className="mt-12">
       <div className="mb-8 flex items-center justify-between">
         <h2 className="text-xl font-semibold leading-tight tracking-wide dark:text-white">
           <Link
-            href="/dashboard/library/playlists"
-            aria-label="View all playlists"
+            href="/dashboard/library/tracks"
+            aria-label="View all tracks"
             className="hover:underline"
           >
-            Your Playlists
+            Your Tracks
           </Link>
         </h2>
 
-        {/* TODO: Playlists index page */}
+        {/* TODO: Tracks index page */}
         <Link
-          href="/dashboard/library/playlists"
-          aria-label="View all playlists"
+          href="/dashboard/library/tracks"
+          aria-label="View all tracks"
           className=" uppercase tracking-wide hover:text-zinc-300 hover:underline dark:text-zinc-200"
         >
           View all
@@ -45,25 +45,25 @@ export const LibraryPlaylists = async ({ token }: Props) => {
       </div>
 
       <ul className="flex items-stretch space-x-2 overflow-x-auto scroll-smooth">
-        {playlists.map((playlist) => (
+        {tracks.map(({ track }) => (
           <li
-            key={playlist.id}
+            key={track.id}
             className="flex w-36 flex-shrink-0 self-stretch rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
           >
-            <Link href={`/dashboard/library/playlists/${playlist.id}`}>
+            <Link href={`/dashboard/library/tracks/${track.id}`}>
               <div className="flex flex-col p-4">
-                {playlist.images[0] && (
+                {track.album.images[0] && (
                   <Image
-                    alt={playlist.name}
-                    src={playlist.images[0].url}
-                    width={playlist.images[0]?.width}
-                    height={playlist.images[0]?.height}
+                    alt={track.name}
+                    src={track.album.images[0].url}
+                    width={track.album.images[0]?.width}
+                    height={track.album.images[0]?.height}
                     className="mb-2 rounded-md"
                   />
                 )}
 
                 <div className="flex-grow font-semibold line-clamp-3">
-                  {playlist.name}
+                  {track.name}
                 </div>
               </div>
             </Link>

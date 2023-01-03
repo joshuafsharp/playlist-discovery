@@ -12,7 +12,7 @@ export default function LoginButton() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "spotify",
       options: {
-        scopes: "user-library-read",
+        scopes: "user-library-read user-follow-read",
         redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/authenticated`,
       },
     });
@@ -20,8 +20,6 @@ export default function LoginButton() {
     if (error) {
       console.log({ error });
     }
-
-    // router.push("/authenticated");
   };
 
   const handleLogOut = async () => {
