@@ -34,6 +34,16 @@ export default async function Playlist(props: Props) {
       <h1 className="mb-12 text-3xl font-semibold leading-tight tracking-wide dark:text-white">
         {playlist.name}
       </h1>
+
+      <table>
+        <tbody>
+          {playlist.tracks.items.map((item, index) => (
+            <tr className="flex justify-between" key={item.track?.id}>
+              <td>{String(index).padStart(2, "0")}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }
