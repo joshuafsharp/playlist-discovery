@@ -21,7 +21,7 @@ export default function LoginButton() {
       console.log({ error });
     }
 
-    router.push("/authenticated");
+    // router.push("/authenticated");
   };
 
   const handleLogOut = async () => {

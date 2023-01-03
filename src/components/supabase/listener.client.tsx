@@ -20,12 +20,16 @@ export default function SupabaseListener({
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN") {
+        router.replace("/dashboard/library");
+      } else if (event === "SIGNED_OUT") {
+        router.replace("/");
+      }
+
       if (session?.access_token !== serverAccessToken) {
         // server and client are out of sync
         // reload the page to fetch fresh server data
         // https://beta.nextjs.org/docs/data-fetching/mutating
-
-        console.log("refreshing the rounter");
 
         router.refresh();
       }
