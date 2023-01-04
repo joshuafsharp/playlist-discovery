@@ -8,7 +8,6 @@ export default function LoginButton() {
   const router = useRouter();
 
   const handleLogIn = async () => {
-    console.log(process.env.NEXT_PUBLIC_SITE_URL);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "spotify",
       options: {
