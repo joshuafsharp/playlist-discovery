@@ -11,9 +11,7 @@ interface Props {
 
 export const revalidate = 0;
 
-const fetchPlaylist = async (token: string, id: string) => {
-  spotifyApi.setAccessToken(token);
-
+const fetchPlaylist = async (id: string) => {
   const response = await spotifyApi.getPlaylist(id);
 
   return response.body;
@@ -26,10 +24,15 @@ export default async function Playlist(props: Props) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const playlist = await fetchPlaylist(
-    session?.provider_token || "",
-    props.params.id
-  );
+  if (!session) {
+    console.log("Not authenticated");
+    return null;
+  }
+
+  spotifyApi.setAccessToken(session.provider_token || "");
+  spotifyApi.setRefreshToken(session.provider_refresh_token || "");
+
+  const playlist = await fetchPlaylist(props.params.id);
 
   return (
     <>

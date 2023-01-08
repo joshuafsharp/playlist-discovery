@@ -1,6 +1,7 @@
 import "server-only";
 
-import { ProtectedRoute } from "./protected-route.client";
+import { ProtectedRouteRedirect } from "./protected-route-redirect.client";
+import { ProtectedRoute } from "./protected-route.server";
 import { Header } from "~/components/layouts/dashboard/header/header.client";
 import { NavigationSidebar } from "~/components/layouts/dashboard/navigation-sidebar.server";
 
@@ -13,25 +14,28 @@ export default async function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <NavigationSidebar />
+    <>
+      {/* @ts-expect-error Type 'Promise<{ children: ReactNode; } | null>' is missing the following properties from type 'ReactElement<any, any>': type, props, key */}
+      <ProtectedRoute>
+        <NavigationSidebar />
 
-      <div className="min-h-screen w-full md:pl-20 lg:pr-96">
-        <Header />
+        <div className="min-h-screen w-full md:pl-20 lg:pr-96">
+          <Header />
 
-        {/* Main area */}
-        <main className=" p-8 lg:p-12">
+          {/* Main area */}
+          <main className=" p-8 lg:p-12">
+            {/* Your content */}
+            {children}
+          </main>
+        </div>
+
+        {/* Secondary column (hidden on smaller screens) */}
+        <aside className="fixed inset-y-0 right-0 z-10 hidden w-96 flex-col overflow-y-auto dark:bg-zinc-900 lg:flex">
           {/* Your content */}
-          {children}
-        </main>
-      </div>
+        </aside>
 
-      {/* Secondary column (hidden on smaller screens) */}
-      <aside className="fixed inset-y-0 right-0 z-10 hidden w-96 flex-col overflow-y-auto dark:bg-zinc-900 lg:flex">
-        {/* Your content */}
-      </aside>
-
-      <ProtectedRoute />
-    </div>
+        <ProtectedRouteRedirect />
+      </ProtectedRoute>
+    </>
   );
 }

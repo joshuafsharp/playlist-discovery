@@ -5,9 +5,7 @@ import createClient from "~/common/supabase/server";
 
 export const revalidate = 0;
 
-const fetchPlaylists = async (token: string) => {
-  spotifyApi.setAccessToken(token);
-
+const fetchPlaylists = async () => {
   const response = await spotifyApi.getUserPlaylists();
 
   return response.body.items;
@@ -20,7 +18,15 @@ export default async function LibraryPlaylists() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const playlists = await fetchPlaylists(session?.provider_token || "");
+  if (!session) {
+    console.log("Not authenticated");
+    return null;
+  }
+
+  spotifyApi.setAccessToken(session.provider_token || "");
+  spotifyApi.setRefreshToken(session.provider_refresh_token || "");
+
+  const playlists = await fetchPlaylists();
 
   return (
     <>

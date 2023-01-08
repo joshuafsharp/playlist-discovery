@@ -7,6 +7,9 @@ export default function LoginButton() {
   const { supabase, session } = useSupabase();
   const router = useRouter();
 
+  const authenticated =
+    session && (session.provider_token || session.provider_refresh_token);
+
   const handleLogIn = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "spotify",
@@ -40,9 +43,9 @@ export default function LoginButton() {
       <div className="absolute -inset-px rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 transition-all duration-200 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
       <button
         className="relative inline-flex w-full items-center justify-center rounded-full border border-transparent bg-white px-6 py-2 text-base font-normal text-gray-900 dark:bg-black dark:text-white"
-        onClick={session ? handleLogOut : handleLogIn}
+        onClick={authenticated ? handleLogOut : handleLogIn}
       >
-        {session ? "Log out" : "Log in with Spotify"}
+        {authenticated ? "Log out" : "Log in with Spotify"}
       </button>
     </>
   );

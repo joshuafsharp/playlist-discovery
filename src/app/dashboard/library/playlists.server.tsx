@@ -4,22 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { spotifyApi } from "~/common/spotify/server";
 
-interface Props {
-  token: string;
-}
-
 export const revalidate = 0;
 
-const fetchPlaylists = async (token: string) => {
-  spotifyApi.setAccessToken(token);
-
+const fetchPlaylists = async () => {
   const response = await spotifyApi.getUserPlaylists();
 
   return response.body.items;
 };
 
-export const LibraryPlaylists = async ({ token }: Props) => {
-  const playlists = await fetchPlaylists(token);
+export const LibraryPlaylists = async () => {
+  const playlists = await fetchPlaylists();
 
   return (
     <section className="mt-12">

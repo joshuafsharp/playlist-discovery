@@ -4,22 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { spotifyApi } from "~/common/spotify/server";
 
-interface Props {
-  token: string;
-}
-
 export const revalidate = 0;
 
-const fetchMyTracks = async (token: string) => {
-  spotifyApi.setAccessToken(token);
-
+const fetchMyTracks = async () => {
   const response = await spotifyApi.getMySavedTracks();
 
   return response.body.items;
 };
 
-export const LibraryTracks = async ({ token }: Props) => {
-  const tracks = await fetchMyTracks(token);
+export const LibraryTracks = async () => {
+  const tracks = await fetchMyTracks();
 
   return (
     <section className="mt-12">
@@ -63,6 +57,16 @@ export const LibraryTracks = async ({ token }: Props) => {
                 )}
 
                 <div className="flex-grow font-semibold line-clamp-3">
+                  {track.artists.map((artist, index) => (
+                    <>
+                      {artist.name}
+
+                      {index < (track?.artists?.length || 1) - 1 && ", "}
+                    </>
+                  ))}
+                </div>
+
+                <div className="flex-grow line-clamp-3 dark:text-zinc-200">
                   {track.name}
                 </div>
               </div>
