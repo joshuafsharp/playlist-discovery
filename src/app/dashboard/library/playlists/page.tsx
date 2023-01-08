@@ -34,11 +34,11 @@ export default async function LibraryPlaylists() {
         Your Playlists
       </h1>
 
-      <ul className="flex items-stretch flex-wrap">
+      <ul className="flex flex-wrap items-stretch">
         {playlists.map((playlist) => (
           <li
             key={playlist.id}
-            className="flex w-1/2 md:w-1/4 lg:w-1/3 xl:w-1/4 px-2 rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
+            className="flex w-1/2 rounded-lg px-2 transition-colors hover:bg-zinc-900 dark:text-white md:w-1/4 lg:w-1/3 xl:w-1/4"
           >
             <Link href={`/dashboard/library/playlists/${playlist.id}`}>
               <div className="flex flex-col p-4">

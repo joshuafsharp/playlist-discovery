@@ -36,13 +36,13 @@ export default async function Playlist(props: Props) {
 
   return (
     <>
-      <div className="flex items-center mb-12">
+      <div className="mb-12 flex items-center">
         <Image
           alt={playlist.name}
           src={playlist.images[0].url}
           width={playlist.images[0].width}
           height={playlist.images[0].height}
-          className="rounded-md w-40 h-auto mr-8 shadow shadow-zinc-800"
+          className="mr-8 h-auto w-40 rounded-md shadow shadow-zinc-800"
         />
 
         <h1 className="text-4xl font-bold leading-tight tracking-wide dark:text-white">
@@ -69,7 +69,7 @@ export default async function Playlist(props: Props) {
                         src={item.track?.album.images[0].url}
                         width={item.track?.album.images[0]?.width}
                         height={item.track?.album.images[0]?.height}
-                        className="rounded-md w-14 h-auto"
+                        className="h-auto w-14 rounded-md"
                       />
                     )}
                     {/* TODO: else show placeholder image */}
@@ -83,7 +83,7 @@ export default async function Playlist(props: Props) {
                           <Link
                             key={artist.id}
                             href={`/artists/${artist.id}`}
-                            className="hover:underline hover:text-white transition-colors"
+                            className="transition-colors hover:text-white hover:underline"
                           >
                             {artist.name}
                           </Link>
@@ -100,7 +100,7 @@ export default async function Playlist(props: Props) {
                     <Link
                       key={item.track.album.id}
                       href={`/artists/${item.track.album.id}`}
-                      className="hover:underline hover:text-white transition-colors text-sm"
+                      className="text-sm transition-colors hover:text-white hover:underline"
                     >
                       {item.track.album.name}
                     </Link>
