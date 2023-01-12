@@ -51,6 +51,12 @@ export default async function Playlist(props: Props) {
       </div>
 
       <table className="w-full">
+        <thead className="mb-4 flex border-b pb-2 font-semibold dark:border-zinc-800 dark:text-zinc-400">
+          <th />
+          <th>Title</th>
+          <th>Album</th>
+        </thead>
+
         <tbody className="space-y-4">
           {playlist.tracks.items.map(
             (item, index) =>

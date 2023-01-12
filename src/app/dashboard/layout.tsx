@@ -19,7 +19,10 @@ export default async function DashboardLayout({
       <ProtectedRoute>
         <NavigationSidebar />
 
-        <div className="min-h-screen w-full md:pl-20 lg:pr-96">
+        <div
+          className="min-h-screen w-full md:pl-20"
+          //  lg:pr-96">
+        >
           <Header />
 
           {/* Main area */}
@@ -29,10 +32,10 @@ export default async function DashboardLayout({
           </main>
         </div>
 
-        {/* Secondary column (hidden on smaller screens) */}
+        {/* TODO Secondary column (hidden on smaller screens)
         <aside className="fixed inset-y-0 right-0 z-10 hidden w-96 flex-col overflow-y-auto dark:bg-zinc-900 lg:flex">
-          {/* Your content */}
-        </aside>
+
+        </aside> */}
 
         <ProtectedRouteRedirect />
       </ProtectedRoute>
