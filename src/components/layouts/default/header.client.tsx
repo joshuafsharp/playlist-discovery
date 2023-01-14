@@ -48,11 +48,7 @@ export const Header = () => {
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
             >
-              {expanded ? (
-                <XMarkIcon className="h-7 w-7" />
-              ) : (
-                <Bars3Icon className="h-7 w-7" />
-              )}
+              {expanded ? <XMarkIcon className="h-7 w-7" /> : <Bars3Icon className="h-7 w-7" />}
             </button>
           </div>
 
@@ -77,7 +73,7 @@ export const Header = () => {
         {/* Mobile nav - TODO: Add click outside close */}
         {expanded && (
           <div className="absolute inset-x-0 top-0 z-10 mt-12 flex h-[calc(100vh-4rem)] flex-col">
-            <nav className=" flex flex-col border-b border-gray-800 dark:bg-black">
+            <nav className="flex flex-col border-b border-gray-800 dark:bg-black">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
@@ -88,7 +84,7 @@ export const Header = () => {
                 </Link>
               ))}
 
-              <div className="group relative m-4 inline-flex items-center justify-center">
+              <div className="relative inline-flex items-center justify-center">
                 <LoginButton />
               </div>
             </nav>

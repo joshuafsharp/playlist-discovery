@@ -39,10 +39,7 @@ module.exports = {
     //
     // To handle this we want this rule to catch usages and highlight them as
     // warnings so we can write appropriate interfaces and guards later.
-    "@typescript-eslint/consistent-type-assertions": [
-      "warn",
-      { assertionStyle: "never" },
-    ],
+    "@typescript-eslint/consistent-type-assertions": ["warn", { assertionStyle: "never" }],
 
     "import/no-unresolved": "off",
     "import/no-absolute-path": "off",
