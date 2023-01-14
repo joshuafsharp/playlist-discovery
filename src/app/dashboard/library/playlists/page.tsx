@@ -38,7 +38,7 @@ export default async function LibraryPlaylists() {
         {playlists.map((playlist) => (
           <li
             key={playlist.id}
-            className="flex w-1/2 rounded-lg px-2 transition-colors hover:bg-zinc-900 dark:text-white md:w-1/4 lg:w-1/3 xl:w-1/4"
+            className="flex w-1/2 rounded-lg px-2 transition-colors hover:bg-zinc-900 dark:text-white md:w-1/4 lg:w-1/4 xl:w-1/5 2xl:w-1/6"
           >
             <Link href={`/dashboard/library/playlists/${playlist.id}`}>
               <div className="flex flex-col p-4">
@@ -52,9 +52,7 @@ export default async function LibraryPlaylists() {
                   />
                 )}
 
-                <div className="grow font-semibold line-clamp-3">
-                  {playlist.name}
-                </div>
+                <div className="grow font-semibold line-clamp-3">{playlist.name}</div>
               </div>
             </Link>
           </li>

@@ -42,7 +42,7 @@ export const LibraryTracks = async () => {
         {tracks.map(({ track }) => (
           <li
             key={track.id}
-            className="flex w-36 shrink-0 self-stretch rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
+            className="w-40 shrink-0 self-stretch rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
           >
             <Link href={`/dashboard/library/tracks/${track.id}`}>
               <div className="flex flex-col p-4">
@@ -52,7 +52,7 @@ export const LibraryTracks = async () => {
                     src={track.album.images[0].url}
                     width={track.album.images[0]?.width}
                     height={track.album.images[0]?.height}
-                    className="mb-2 rounded-md"
+                    className="mb-2 h-32 rounded-md"
                   />
                 )}
 
@@ -66,7 +66,7 @@ export const LibraryTracks = async () => {
                   ))}
                 </div>
 
-                <div className="grow line-clamp-3 dark:text-zinc-200">{track.name}</div>
+                <div className="grow break-words line-clamp-3 dark:text-zinc-400">{track.name}</div>
               </div>
             </Link>
           </li>

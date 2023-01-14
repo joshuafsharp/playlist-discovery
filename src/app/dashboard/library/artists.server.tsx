@@ -42,7 +42,7 @@ export const LibraryArtists = async () => {
         {artists.items.map((artist) => (
           <li
             key={artist.id}
-            className="flex w-36 shrink-0 self-stretch rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
+            className="w-40 shrink-0 self-stretch rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
           >
             <Link href={`/dashboard/library/artists/${artist.id}`}>
               <div className="flex flex-col p-4">
@@ -52,13 +52,11 @@ export const LibraryArtists = async () => {
                     src={artist.images[0].url}
                     width={artist.images[0]?.width}
                     height={artist.images[0]?.height}
-                    className="mb-2 rounded-md"
+                    className="mb-2 h-32 rounded-md"
                   />
                 )}
 
-                <div className="grow font-semibold line-clamp-3">
-                  {artist.name}
-                </div>
+                <div className="grow font-semibold line-clamp-3">{artist.name}</div>
               </div>
             </Link>
           </li>
