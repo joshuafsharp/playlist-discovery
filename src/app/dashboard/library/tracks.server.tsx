@@ -66,9 +66,7 @@ export const LibraryTracks = async () => {
                   ))}
                 </div>
 
-                <div className="grow line-clamp-3 dark:text-zinc-200">
-                  {track.name}
-                </div>
+                <div className="grow line-clamp-3 dark:text-zinc-200">{track.name}</div>
               </div>
             </Link>
           </li>

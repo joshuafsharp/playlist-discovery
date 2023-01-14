@@ -3,21 +3,15 @@ import Link from "next/link";
 import { spotifyApi } from "~/common/spotify/server";
 import createClient from "~/common/supabase/server";
 
-interface Props {
-  params: {
-    id: string;
-  };
-}
-
 export const revalidate = 0;
 
-const fetchPlaylist = async (id: string) => {
-  const response = await spotifyApi.getPlaylist(id);
+const fetchMyTracks = async () => {
+  const response = await spotifyApi.getMySavedTracks();
 
-  return response.body;
+  return response.body.items;
 };
 
-export default async function Playlist(props: Props) {
+export default async function Playlist() {
   const supabase = createClient();
 
   const {
@@ -33,21 +27,22 @@ export default async function Playlist(props: Props) {
   spotifyApi.setAccessToken(session.provider_token || "");
   spotifyApi.setRefreshToken(session.provider_refresh_token || "");
 
-  const playlist = await fetchPlaylist(props.params.id);
+  const myTracks = await fetchMyTracks();
 
   return (
     <>
       <div className="mb-12 flex items-center">
-        <Image
-          alt={playlist.name}
-          src={playlist.images[0].url}
-          width={playlist.images[0].width}
-          height={playlist.images[0].height}
+        {/* TODO: Show my tracks image */}
+        {/* <Image
+          alt={myTracks.name}
+          src={myTracks.images[0].url}
+          width={myTracks.images[0].width}
+          height={myTracks.images[0].height}
           className="mr-8 h-auto w-40 rounded-md shadow shadow-zinc-800"
-        />
+        /> */}
 
         <h1 className="text-4xl font-bold leading-tight tracking-wide dark:text-white">
-          {playlist.name}
+          Your Tracks
         </h1>
       </div>
 
@@ -62,20 +57,21 @@ export default async function Playlist(props: Props) {
         </thead>
 
         <tbody className="space-y-4 pt-4">
-          {playlist.tracks.items.map(
+          {myTracks.map(
             (item, index) =>
               item.track !== null && (
                 <tr className="w-full dark:text-zinc-400" key={item.track?.id}>
                   <td className="self-center p-2">{String(index + 1).padStart(2, "0")}</td>
 
                   <td className=" p-2">
+                    {/* TODO: min width w-24 */}
                     {item.track?.album.images[0] && (
                       <Image
                         alt={item.track.name}
                         src={item.track?.album.images[0].url}
                         width={item.track?.album.images[0]?.width}
                         height={item.track?.album.images[0]?.height}
-                        className="h-auto w-24 rounded-md"
+                        className="h-auto w-16 min-w-[4rem] rounded-md"
                       />
                     )}
                     {/* TODO: else show placeholder image */}
