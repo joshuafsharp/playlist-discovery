@@ -7,9 +7,10 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended",
   ],
 
-  plugins: ["prettier"],
+  plugins: ["prettier", "tailwindcss"],
 
   env: {
     node: true,

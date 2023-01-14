@@ -42,7 +42,7 @@ export const LibraryPlaylists = async () => {
         {playlists.map((playlist) => (
           <li
             key={playlist.id}
-            className="flex w-36 flex-shrink-0 self-stretch rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
+            className="flex w-36 shrink-0 self-stretch rounded-lg transition-colors hover:bg-zinc-900 dark:text-white"
           >
             <Link href={`/dashboard/library/playlists/${playlist.id}`}>
               <div className="flex flex-col p-4">
@@ -56,7 +56,7 @@ export const LibraryPlaylists = async () => {
                   />
                 )}
 
-                <div className="flex-grow font-semibold line-clamp-3">
+                <div className="grow font-semibold line-clamp-3">
                   {playlist.name}
                 </div>
               </div>

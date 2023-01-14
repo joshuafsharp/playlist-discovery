@@ -103,7 +103,7 @@ export const Header = () => {
 
         {/* Desktop nav area */}
         <div className="hidden px-4 md:flex md:min-w-0 md:flex-1 md:items-center md:justify-between">
-          <div className="relative max-w-2xl flex-grow text-gray-300 focus-within:text-gray-400">
+          <div className="relative max-w-2xl grow text-gray-300 focus-within:text-gray-400">
             <label htmlFor="desktop-search" className="sr-only">
               Search
             </label>
@@ -112,7 +112,7 @@ export const Header = () => {
               id="desktop-search"
               type="search"
               placeholder="Search"
-              className="block w-full rounded-full border-transparent pl-12 placeholder-gray-500 focus:border-transparent focus:ring-0 dark:bg-zinc-900 sm:text-sm"
+              className="block w-full rounded-full border-transparent pl-12 placeholder:text-gray-500 focus:border-transparent focus:ring-0 dark:bg-zinc-900 sm:text-sm"
             />
 
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-4">
@@ -120,7 +120,7 @@ export const Header = () => {
             </div>
           </div>
 
-          <div className="ml-10 flex flex-shrink-0 items-center space-x-10 pr-4">
+          <div className="ml-10 flex shrink-0 items-center space-x-10 pr-4">
             <div className="flex items-center space-x-8">
               <span className="inline-flex">
                 <a
@@ -250,7 +250,7 @@ export const Header = () => {
                         id="mobile-search"
                         type="search"
                         placeholder="Search all inboxes"
-                        className="block w-full rounded-md border-gray-300 pl-10 placeholder-gray-500 focus:border-indigo-600 focus:ring-indigo-600"
+                        className="block w-full rounded-md border-gray-300 pl-10 placeholder:text-gray-500 focus:border-indigo-600 focus:ring-indigo-600"
                       />
                       <div className="absolute inset-y-0 left-0 flex items-center justify-center pl-3">
                         <MagnifyingGlassIcon
@@ -283,7 +283,7 @@ export const Header = () => {
                   </div>
                   <div className="border-t border-gray-200 pt-4 pb-3">
                     <div className="max-w-8xl mx-auto flex items-center px-4 sm:px-6">
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <Image
                           className="rounded-full"
                           src={user.imageUrl}
@@ -302,7 +302,7 @@ export const Header = () => {
                       </div>
                       <a
                         href="#"
-                        className="ml-auto flex-shrink-0 bg-white p-2 text-gray-400 hover:text-gray-500"
+                        className="ml-auto shrink-0 bg-white p-2 text-gray-400 hover:text-gray-500"
                       >
                         <span className="sr-only">View notifications</span>
                         <BellIcon className="h-6 w-6" aria-hidden="true" />

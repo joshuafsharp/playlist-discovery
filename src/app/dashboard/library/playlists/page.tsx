@@ -52,7 +52,7 @@ export default async function LibraryPlaylists() {
                   />
                 )}
 
-                <div className="flex-grow font-semibold line-clamp-3">
+                <div className="grow font-semibold line-clamp-3">
                   {playlist.name}
                 </div>
               </div>

@@ -93,7 +93,7 @@ export const Header = () => {
               </div>
             </nav>
 
-            <div className="flex-grow backdrop-blur-sm" />
+            <div className="grow backdrop-blur-sm" />
           </div>
         )}
       </div>
