@@ -61,7 +61,7 @@ export const Header = () => {
   return (
     <>
       {/* Top nav*/}
-      <header className="sticky top-0 flex h-16 items-center bg-white dark:bg-black">
+      <header className="sticky top-0 z-10 flex h-16 items-center bg-white dark:bg-black">
         {/* Mobile picker area */}
         <div className="mx-auto md:hidden">
           <div className="relative">
@@ -71,19 +71,14 @@ export const Header = () => {
             <select
               id="inbox-select"
               className="rounded-md border-0 bg-none pl-3 pr-8 text-base font-medium text-gray-900 focus:ring-2 focus:ring-indigo-600"
-              defaultValue={
-                sidebarNavigation.find((item) => item.current)?.name
-              }
+              defaultValue={sidebarNavigation.find((item) => item.current)?.name}
             >
               {sidebarNavigation.map((item) => (
                 <option key={item.name}>{item.name}</option>
               ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-2">
-              <ChevronDownIcon
-                className="h-5 w-5 text-gray-500"
-                aria-hidden="true"
-              />
+              <ChevronDownIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
             </div>
           </div>
         </div>
@@ -191,11 +186,7 @@ export const Header = () => {
 
         {/* Mobile menu, show/hide this `div` based on menu open/closed state */}
         <Transition.Root show={mobileMenuOpen} as={Fragment}>
-          <Dialog
-            as="div"
-            className="relative z-40 md:hidden"
-            onClose={setMobileMenuOpen}
-          >
+          <Dialog as="div" className="relative z-40 md:hidden" onClose={setMobileMenuOpen}>
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -253,10 +244,7 @@ export const Header = () => {
                         className="block w-full rounded-md border-gray-300 pl-10 placeholder:text-gray-500 focus:border-indigo-600 focus:ring-indigo-600"
                       />
                       <div className="absolute inset-y-0 left-0 flex items-center justify-center pl-3">
-                        <MagnifyingGlassIcon
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                        />
+                        <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
                       </div>
                     </div>
                   </div>

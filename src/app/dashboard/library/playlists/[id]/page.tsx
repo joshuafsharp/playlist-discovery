@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { clsx } from "clsx";
+
 import { spotifyApi } from "~/common/spotify/server";
 import createClient from "~/common/supabase/server";
 
@@ -51,37 +53,57 @@ export default async function Playlist(props: Props) {
         </h1>
       </div>
 
-      <table className="w-full">
-        <thead className="border-b pb-2 text-sm font-medium uppercase dark:border-zinc-800 dark:text-zinc-400">
+      <table className="relative w-full border-separate" cellSpacing={0}>
+        <thead className="pb-2 text-sm font-medium uppercase  dark:text-zinc-400">
           <tr className="text-left">
-            <th className="px-2 pb-1 text-center">#</th>
-            <th className="px-2 pb-1" />
-            <th className="px-2 pb-1">Title</th>
-            <th className="px-2 pb-1">Album</th>
+            <th className="sticky top-16 border-b px-2 pb-1 text-center dark:border-zinc-800 dark:bg-black"></th>
+            <th className="sticky top-16 border-b px-2 pb-1 dark:border-zinc-800 dark:bg-black" />
+            <th className="sticky top-16 border-b px-2 pb-1 dark:border-zinc-800 dark:bg-black">
+              Title
+            </th>
+            <th className="sticky top-16 border-b px-2 pb-1 dark:border-zinc-800 dark:bg-black">
+              Album
+            </th>
           </tr>
         </thead>
 
-        <tbody className="space-y-4 pt-4">
+        <tbody className="space-y-4">
           {playlist.tracks.items.map(
             (item, index) =>
               item.track !== null && (
                 <tr className="w-full dark:text-zinc-400" key={item.track?.id}>
-                  <td className="self-center p-2">{String(index + 1).padStart(2, "0")}</td>
+                  <td
+                    className={clsx("p-2 text-center", {
+                      "w-10": playlist.tracks.items.length < 100,
+                      "w-12": playlist.tracks.items.length >= 100,
+                      "pt-6": index === 0,
+                    })}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </td>
 
-                  <td className=" p-2">
+                  <td
+                    className={clsx("w-24 p-2", {
+                      "pt-6": index === 0,
+                    })}
+                  >
                     {item.track?.album.images[0] && (
                       <Image
                         alt={item.track.name}
                         src={item.track?.album.images[0].url}
                         width={item.track?.album.images[0]?.width}
                         height={item.track?.album.images[0]?.height}
-                        className="h-auto w-24 rounded-md"
+                        className="h-auto  rounded-md"
                       />
                     )}
                     {/* TODO: else show placeholder image */}
                   </td>
 
-                  <td className="w-2/3 max-w-sm p-2">
+                  <td
+                    className={clsx("p-2", {
+                      "pt-6": index === 0,
+                    })}
+                  >
                     <div className="text-white">{item.track.name}</div>
 
                     <div className="text-sm">
@@ -101,7 +123,11 @@ export default async function Playlist(props: Props) {
                     </div>
                   </td>
 
-                  <td className="self-center p-2">
+                  <td
+                    className={clsx("self-center p-2", {
+                      "pt-6": index === 0,
+                    })}
+                  >
                     {" "}
                     <Link
                       key={item.track.album.id}

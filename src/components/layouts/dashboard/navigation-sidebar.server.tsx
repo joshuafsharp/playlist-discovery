@@ -33,13 +33,13 @@ export const NavigationSidebar = () => {
       <div className="left-0 md:static md:shrink-0">
         <Link
           href="/"
-          className="flex h-16 w-16 items-center justify-center bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 md:w-20"
+          className="flex h-16 w-16 items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 md:w-20"
         >
           <Image
             src="https://tailwindui.com/img/logos/mark.svg?color=white"
             alt="Your Company"
-            height="48"
-            width="48"
+            height="40"
+            width="40"
           />
         </Link>
       </div>
@@ -51,9 +51,7 @@ export const NavigationSidebar = () => {
               key={item.name}
               href={item.href}
               className={classNames(
-                item.current
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-400 hover:bg-gray-700",
+                item.current ? "bg-gray-900 text-white" : "text-gray-400 hover:bg-gray-700",
                 "inline-flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg"
               )}
             >

@@ -8,11 +8,7 @@ import { NavigationSidebar } from "~/components/layouts/dashboard/navigation-sid
 // do not cache this layout
 export const revalidate = 0;
 
-export default async function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* @ts-expect-error Type 'Promise<{ children: ReactNode; } | null>' is missing the following properties from type 'ReactElement<any, any>': type, props, key */}
