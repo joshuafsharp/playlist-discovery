@@ -13,7 +13,8 @@ export default function LoginButton() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "spotify",
       options: {
-        scopes: "user-library-read user-follow-read",
+        scopes:
+          "user-library-read user-follow-read streaming user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read user-library-modify",
         redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/authenticated`,
       },
     });

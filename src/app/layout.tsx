@@ -14,11 +14,7 @@ export type TypedSupabaseClient = SupabaseClient<Database>;
 export const revalidate = 0;
 
 // Layout applies to the home page, discover and support
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const supabase = createClient();
 
   const {
@@ -30,7 +26,7 @@ export default async function RootLayout({
       TODO: Handle user selected colour scheme, as well as system preference:
       https://tailwindcss.com/docs/dark-mode
     */
-    <html lang="en" className="dark dark:bg-black">
+    <html lang="en" className="dark:bg-black">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
