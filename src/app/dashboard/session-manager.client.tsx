@@ -2,9 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import { spotifyApi } from "~/common/spotify/server";
+import { PlaybackProvider } from "~/components/library/playback-provider.client";
 import { useSupabase } from "~/components/supabase/provider.client";
 
-export const ProtectedRouteRedirect = () => {
+interface Props {
+  children: React.ReactNode;
+}
+
+export const SessionManager = ({ children }: Props) => {
   const { session } = useSupabase();
   const { replace } = useRouter();
 
@@ -17,16 +22,7 @@ export const ProtectedRouteRedirect = () => {
   spotifyApi.setAccessToken(session.provider_token || "");
   spotifyApi.setRefreshToken(session.provider_refresh_token || "");
 
-  spotifyApi.getMyDevices().then((devices) => {
-    devices.body.devices.forEach((device) => {
-      console.log(device.type);
-      if (device.type === "Computer") {
-        // spotifyApi.play({ device_id: device.id || "" });
-      }
-    });
-  });
-
-  return null;
+  return <PlaybackProvider token={session.provider_token}>{children}</PlaybackProvider>;
 };
 
-export default ProtectedRouteRedirect;
+export default SessionManager;
