@@ -10,7 +10,8 @@ export const ProtectedRouteRedirect = () => {
 
   if (!session || !session.provider_token || !session.provider_refresh_token) {
     replace("/login");
-    return;
+
+    return null;
   }
 
   spotifyApi.setAccessToken(session.provider_token || "");
@@ -20,12 +21,10 @@ export const ProtectedRouteRedirect = () => {
     devices.body.devices.forEach((device) => {
       console.log(device.type);
       if (device.type === "Computer") {
-        spotifyApi.play({ device_id: device.id || "" });
+        // spotifyApi.play({ device_id: device.id || "" });
       }
     });
   });
-
-  spotifyApi.player;
 
   return null;
 };

@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const ProtectedRoute = async ({ children }: Props) => {
+export const ProtectedServerRoute = async ({ children }: Props) => {
   const supabase = createClient();
 
   const {
@@ -16,4 +16,4 @@ export const ProtectedRoute = async ({ children }: Props) => {
   return session ? <>{children}</> : null;
 };
 
-export default ProtectedRoute;
+export default ProtectedServerRoute;
